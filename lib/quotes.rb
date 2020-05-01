@@ -6,11 +6,11 @@ require 'openssl'
 require 'pry'
 
 class Quotes
-  attr_reader :quote, :@response
+  attr_reader :quote, :response, :request, :author
   def initialize
     @request = HTTParty.get('http://quotes.rest/qod.json')
     @response = JSON.parse(request.body)
-    @quote = response['contents']['quotes'][0]['quote']
-    @author = response['contents']['quotes'][0]['author']
+    @quote = @response['contents']['quotes'][0]['quote']
+    @author = @response['contents']['quotes'][0]['author']
   end
 end

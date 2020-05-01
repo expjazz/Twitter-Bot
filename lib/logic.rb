@@ -11,11 +11,22 @@ class FinalMessage
   end
 
   def weather_logic_morning
-    m1 = "We have today a day with #{@weather.main_description}."
+    m1 = "#{@greeting.morning_list} #{@weather.main_description}."
     if @weather.temperature > 20
-      m2 = "We will have a very hot day, with a temperature of #{@weather.temperature} Celsius."
+      m2 = "#{@greeting.morning_list_hot} #{@weather.temperature} Celsius."
     elsif @weather.temperature < 20
-      m2 = "We will have a breezing day, with a temperature of #{@weather.temperature} Celsius."
+      m2 = "#{@greeting.morning_list_hot} #{@weather.temperature} Celsius."
+    end
+
+    m1 + m2
+  end
+
+  def weather_logic_night
+    m1 = "#{@greeting.night_list} #{@weather.main_description}."
+    if @weather.temperature > 20
+      m2 = "#{@greeting.night_list_warm} #{@weather.temperature} Celsius."
+    elsif @weather.temperature < 20
+      m2 = "#{@greeting.night_list_cold} #{@weather.temperature} Celsius."
     end
 
     m1 + m2

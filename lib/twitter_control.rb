@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_relative '../keys.rb'
 require 'twitter'
-require_relative 'scrapper_subj.rb'
 
 class TwitterControl
   attr_accessor :client
-  @client = Twitter::REST::Client.new do |config|
-    config.consumer_key        = Consumer_key
-    config.consumer_secret     = Consumer_secret
-    config.access_token        = Access_token
-    config.access_token_secret = Access_token_secret
+  def initialize
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = Consumer_key
+      config.consumer_secret     = Consumer_secret
+      config.access_token        = Access_token
+      config.access_token_secret = Access_token_secret
+    end
   end
 
   def post(post)
@@ -28,6 +28,14 @@ class TwitterControl
 
   def follow(profile)
     @client.follow(profile)
+  end
+
+  def interactor(_search_list, hashtag)
+    client.search(hashtag).each do |x|
+      client.update "@#{x.user.screen_name}
+    Hey, If you want to know more please follow me."
+      client.follow(x.user.screen_name)
+    end
   end
 
   def control_during_day
