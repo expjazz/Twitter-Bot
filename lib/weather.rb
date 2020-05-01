@@ -16,5 +16,3 @@ class Weather
     @weather_id = response['list'][0]['weather'][0]['id']
   end
 end
-
-weather = Weather.new

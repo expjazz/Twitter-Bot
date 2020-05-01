@@ -10,11 +10,14 @@ client = Twitter::REST::Client.new do |config|
   config.access_token        = Access_token
   config.access_token_secret = Access_token_secret
 end
-scr = Scrapper.new('Clothes for winter')
+def control_during_day
+  posts = [scr.get_title, scr.get_link]
 
-posts = [scr.get_title, scr.get_link]
-
-posts.each do |post|
-  p client.update(post)
-  sleep(60)
+  posts.each do |post|
+    p client.update(post)
+    sleep(60)
+  end
 end
+
+client.search('#lvchrist').each { |x| client.update "@#{x.user.screen_name} Hey, Im learning" }
+# client.followers # fetch list of followers

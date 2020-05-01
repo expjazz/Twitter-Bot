@@ -23,7 +23,7 @@ class Scrapper
   end
 end
 
-test = Scrapper.new('Best clothes for the whole summer')
+# test = Scrapper.new('Best clothes for the whole summer')
 
-p test.get_text
-p test.get_link
+# p test.get_text
+# p test.get_link
