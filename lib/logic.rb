@@ -4,6 +4,7 @@ require_relative 'weather'
 require_relative 'greeting_content'
 
 class FinalMessage
+  attr_reader :weather, :greeting
   def initialize
     @weather = Weather.new
     @greeting = Greetings.new
@@ -20,5 +21,3 @@ class FinalMessage
     m1 + m2
   end
 end
-test = FinalMessage.new
-p test.weather_logic_morning
