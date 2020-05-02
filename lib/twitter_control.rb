@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative '../keys.rb'
 require 'twitter'
 
 class TwitterControl
@@ -30,7 +31,7 @@ class TwitterControl
     @client.follow(profile)
   end
 
-  def interactor(_search_list, hashtag)
+  def interactor(hashtag)
     client.search(hashtag).each do |x|
       client.update "@#{x.user.screen_name}
     Hey, If you want to know more please follow me."
@@ -47,6 +48,7 @@ class TwitterControl
     end
   end
 end
-
+test = TwitterControl.new
+test.interactor('lvlvlvchrist')
 # client.search('#lvchrist').each { |x| client.update "@#{x.user.screen_name} Hey, Im learning" }
 # client.followers # fetch list of followers

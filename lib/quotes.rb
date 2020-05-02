@@ -3,7 +3,6 @@
 require 'httparty'
 require 'net/http'
 require 'openssl'
-require 'pry'
 
 class Quotes
   attr_reader :quote, :response, :request, :author

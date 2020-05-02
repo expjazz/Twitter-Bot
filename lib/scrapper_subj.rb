@@ -14,16 +14,16 @@ class Scrapper
     @doc = Nokogiri::HTML @driver.page_source
   end
 
-  def get_text
-    @doc.css('h3.LC20lb')[0].text
+  def get_text(index)
+    @doc.css('h3.LC20lb')[index].text
   end
 
-  def get_link
-    @doc.css('div.r').children[0].attributes['href'].value
+  def get_link(index)
+    @doc.css('div.r')[index].children[0].attributes['href'].value
   end
 end
 
 # test = Scrapper.new('Best clothes for the whole summer')
 
-# p test.get_text
-# p test.get_link
+# p test.get_text(5)
+# p test.get_link(5)
