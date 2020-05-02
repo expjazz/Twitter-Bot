@@ -30,12 +30,12 @@ class TwitterControl
   end
 
   def get_tweet_content(hashtag)
-    client.search(hashtag)
+    client.search(hashtag).take(10)
   end
 
   def tweet_content_to_csv(hashtag)
     CSV.open('tweets.csv', 'w') do |csv|
-      get_tweet_content(hashtag).take(10).each { |tweet| csv << [tweet.full_text, tweet.user, tweet.user.name, tweet.user.location] }
+      get_tweet_content(hashtag).take(10).each { |tweet| csv << [tweet.full_text, tweet.user, tweet.user.name, tweet.user.location, tweet.user.followers_count, tweet.user.email] }
     end
   end
 
@@ -50,5 +50,4 @@ class TwitterControl
 end
 # client.search('#lvchrist').each { |x| client.update "@#{x.user.screen_name} Hey, Im learning" }
 # client.followers # fetch list of followers
-# test = TwitterControl.new
 # test.tweet_content_to_csv('#GolpeDeEstado')
