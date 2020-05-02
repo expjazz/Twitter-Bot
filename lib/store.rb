@@ -4,6 +4,7 @@ require 'nokogiri'
 require 'httparty'
 
 class StoreScrapper
+  attr_reader :doc
   def initialize
     @unparsed_page = HTTParty.get('https://us.dolcegabbana.com/it/uomo/abbigliamento/')
     @doc = Nokogiri::HTML(@unparsed_page)

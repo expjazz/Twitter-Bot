@@ -15,7 +15,7 @@ class TwitterControl
   end
 
   def post(post)
-    if post.size > 140
+    if post.size > 280
       raise 'Invalid post. Too long'
     else
       @client.update(post)
@@ -47,7 +47,5 @@ class TwitterControl
     end
   end
 end
-test = TwitterControl.new
-test.interactor('lvlvlvchrist')
 # client.search('#lvchrist').each { |x| client.update "@#{x.user.screen_name} Hey, Im learning" }
 # client.followers # fetch list of followers
