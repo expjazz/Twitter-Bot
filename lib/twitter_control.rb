@@ -2,6 +2,8 @@
 
 require_relative '../keys.rb'
 require 'twitter'
+require 'pry'
+require 'csv'
 
 class TwitterControl
   attr_accessor :client
@@ -14,38 +16,39 @@ class TwitterControl
     end
   end
 
-  def post(post)
+  def post(post, seconds)
     if post.size > 280
       raise 'Invalid post. Too long'
     else
+      sleep(seconds)
       @client.update(post)
     end
-  end
-
-  def search_hashtag(hashtag)
-    @client.search(hashtag)
   end
 
   def follow(profile)
     @client.follow(profile)
   end
 
-  def interactor(hashtag)
+  def get_tweet_content(hashtag)
+    client.search(hashtag)
+  end
+
+  def tweet_content_to_csv(hashtag)
+    CSV.open('tweets.csv', 'w') do |csv|
+      get_tweet_content(hashtag).take(10).each { |tweet| csv << [tweet.full_text, tweet.user, tweet.user.name, tweet.user.location] }
+    end
+  end
+
+  def interactor(hashtag, time)
+    sleep(time)
     client.search(hashtag).each do |x|
       client.update "@#{x.user.screen_name}
     Hey, If you want to know more please follow me."
       client.follow(x.user.screen_name)
     end
   end
-
-  def control_during_day
-    posts = [scr.get_title, scr.get_link]
-
-    posts.each do |post|
-      p client.update(post)
-      sleep(60)
-    end
-  end
 end
 # client.search('#lvchrist').each { |x| client.update "@#{x.user.screen_name} Hey, Im learning" }
 # client.followers # fetch list of followers
+# test = TwitterControl.new
+# test.tweet_content_to_csv('#GolpeDeEstado')

@@ -2,7 +2,7 @@
 
 class Greetings
   def list
-    morning_list = ['Hey, Hope you are having an awesome day. The weather is']
+    morning_list = ['we hope that everything is good. The weather is mainly']
     morning_list.sample
   end
 
