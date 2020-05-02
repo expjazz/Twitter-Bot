@@ -5,8 +5,6 @@ require 'httparty'
 require 'pry'
 require 'selenium-webdriver'
 class Scrapper
-  attr_reader :subject, :unparsed_page, :parsed_page
-
   def initialize(subject)
     @subject = subject
     @driver = Selenium::WebDriver.for :firefox
@@ -23,7 +21,7 @@ class Scrapper
   end
 end
 
-# test = Scrapper.new('Best clothes for the whole summer')
+test = Scrapper.new('Best clothes for the whole summer')
 
-# p test.get_text(5)
-# p test.get_link(5)
+p test.get_text(5)
+p test.get_link(5)

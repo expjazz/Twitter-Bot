@@ -17,7 +17,6 @@ class TwitterControl
   def post(post)
     if post.size > 140
       raise 'Invalid post. Too long'
-      p 'test'
     else
       @client.update(post)
     end
