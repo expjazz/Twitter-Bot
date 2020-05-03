@@ -32,6 +32,3 @@ class FinalMessage
     "#{time_logic} #{m1} #{m2}"
   end
 end
-
-test = FinalMessage.new
-p test.weather_logic

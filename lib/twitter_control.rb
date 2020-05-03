@@ -6,7 +6,7 @@ require 'pry'
 require 'csv'
 
 class TwitterControl
-  attr_accessor :client
+  attr_accessor :client, :f_count, :followers_list
   def initialize
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = Consumer_key
@@ -14,6 +14,8 @@ class TwitterControl
       config.access_token        = Access_token
       config.access_token_secret = Access_token_secret
     end
+    @followers_list = client.follower_ids.attrs[:ids]
+    @f_count = @followers_list.size
   end
 
   def post(post, seconds)
@@ -39,6 +41,26 @@ class TwitterControl
     end
   end
 
+  def catch_new_followers
+    temp = client.follower_ids.attrs[:ids]
+    to_send_dm = []
+    if @f_count < temp.size
+      temp.each { |x| to_send_dm << x if @followers_list.include?(x) == false }
+    end
+    to_send_dm
+  end
+
+  def dm_new_follower
+    list = catch_new_followers
+    if list.size.positive?
+      list.each do |x|
+        @client.follow(profile)
+        client.create_direct_message(x, 'Do you want to talk?')
+        @followers_list << x
+      end
+    end
+  end
+
   def interactor(hashtag, time)
     sleep(time)
     client.search(hashtag).each do |x|
@@ -50,4 +72,3 @@ class TwitterControl
 end
 # client.search('#lvchrist').each { |x| client.update "@#{x.user.screen_name} Hey, Im learning" }
 # client.followers # fetch list of followers
-# test.tweet_content_to_csv('#GolpeDeEstado')
