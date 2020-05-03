@@ -3,8 +3,8 @@
 require_relative '../lib/store'
 
 describe StoreScrapper do
-  let (:store) { StoreScrapper.new }
-  let (:doc) { store.instance_variable_get(:@doc) }
+  let(:store) { StoreScrapper.new }
+  let(:doc) { store.instance_variable_get(:@doc) }
 
   describe '#initialize' do
     it 'should initialize a doc as a nokogiri object' do

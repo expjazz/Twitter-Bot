@@ -3,8 +3,8 @@
 require_relative '../lib/scrapper_subj'
 
 describe Scrapper do
-  let (:scrapper) { Scrapper.new('testing') }
-  let (:doc) { scrapper.instance_variable_get(:@doc) }
+  let(:scrapper) { Scrapper.new('testing') }
+  let(:doc) { scrapper.instance_variable_get(:@doc) }
 
   describe '#initialize' do
     it 'should accept a subject as an argument' do

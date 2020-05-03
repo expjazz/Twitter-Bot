@@ -6,7 +6,8 @@ require 'httparty'
 class StoreScrapper
   attr_reader :doc
   def initialize
-    @unparsed_page = HTTParty.get('https://us.dolcegabbana.com/it/uomo/abbigliamento/')
+    @unparsed_page =
+      HTTParty.get('https://us.dolcegabbana.com/it/uomo/abbigliamento/')
     @doc = Nokogiri::HTML(@unparsed_page)
   end
 
@@ -20,7 +21,3 @@ class StoreScrapper
     'https://us.dolcegabbana.com' + temp
   end
 end
-
-#       @product = @doc.css('li.category-product')[0].text
-#     @product_link = 'https://www.anacapri.com.br' + @doc.xpath('//*[@id="product-list"]/div[3]/div[2]/ul/li[1]/div/a')[0].attributes['href'].value
-#

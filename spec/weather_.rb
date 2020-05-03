@@ -2,9 +2,9 @@
 
 require_relative '../lib/weather'
 describe Weather do
-  let (:weather) { Weather.new }
-  let (:temperature) { weather.instance_variable_get(:@temperature) }
-  let (:main_description) { weather.instance_variable_get(:@main_description) }
+  let(:weather) { Weather.new }
+  let(:temperature) { weather.instance_variable_get(:@temperature) }
+  let(:main_description) { weather.instance_variable_get(:@main_description) }
 
   describe '#initialize' do
     it 'should get the temperature of the time as an string' do

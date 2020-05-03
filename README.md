@@ -27,7 +27,7 @@
     <img src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/5726/s300/icon-white-on-murple-copy.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Web Scraper</h3>
+  <h3 align="center">Twitter bot</h3>
 
   <p align="center">
     This is the Capstone Project for the Ruby section of the Microverse curriculum.

@@ -9,22 +9,20 @@ class TwitterControl
   attr_accessor :client, :f_count, :followers_list
   def initialize
     @client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = Consumer_key
-      config.consumer_secret     = Consumer_secret
-      config.access_token        = Access_token
-      config.access_token_secret = Access_token_secret
+      config.consumer_key        = CONSUMER_KEY
+      config.consumer_secret     = CONSUMER_SECRET
+      config.access_token        = ACCESS_TOKEN
+      config.access_token_secret = ACCESS_TOKEN_SECRET
     end
     @followers_list = client.follower_ids.attrs[:ids]
     @f_count = @followers_list.size
   end
 
   def post(post, seconds)
-    if post.size > 280
-      raise 'Invalid post. Too long'
-    else
-      sleep(seconds)
-      @client.update(post)
-    end
+    raise 'Invalid post. Too long' if post.size > 280
+
+    sleep(seconds)
+    @client.update(post)
   end
 
   def follow(profile)
@@ -37,7 +35,11 @@ class TwitterControl
 
   def tweet_content_to_csv(hashtag)
     CSV.open('tweets.csv', 'w') do |csv|
-      get_tweet_content(hashtag).take(10).each { |tweet| csv << [tweet.full_text, tweet.user, tweet.user.name, tweet.user.location, tweet.user.followers_count, tweet.user.email] }
+      get_tweet_content(hashtag).each do |tweet|
+        csv << [tweet.full_text, tweet.user, tweet.user.name,
+                tweet.user.location,
+                tweet.user.followers_count, tweet.user.email]
+      end
     end
   end
 
@@ -70,5 +72,3 @@ class TwitterControl
     end
   end
 end
-# client.search('#lvchrist').each { |x| client.update "@#{x.user.screen_name} Hey, Im learning" }
-# client.followers # fetch list of followers

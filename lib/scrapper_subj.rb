@@ -11,6 +11,7 @@ class Scrapper
     @driver = Selenium::WebDriver.for :firefox
     @driver.get "https://www.google.com/search?q=#{@subject}"
     @doc = Nokogiri::HTML @driver.page_source
+    @driver.quit
   end
 
   def get_text(index)
