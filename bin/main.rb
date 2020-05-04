@@ -26,32 +26,32 @@ count_article = 0
 
 loop do
   controller.post("Here are the news on corona.
-   We have #{covid.confirmed} cases confirmed. #stayhome", 10)
-  controller.post(greeter_content.weather_logic, 10)
+   We have #{covid.confirmed} cases confirmed. #stayhome", 100)
+  controller.post(greeter_content.weather_logic, 100)
   controller.interactor('#lvlvlvch', 10)
-  controller.post('A great day to use one of our amazing products!!', 10)
+  controller.post('A great day to use one of our amazing products!!', 100)
   controller.post("Please check out this amazing offer:
-     #{store_content.product_title(count_product)}", 10)
+     #{store_content.product_title(count_product)}", 10)0
   controller.post(store_content.product_link(count_product), 10)
   count_product += 2
   controller.post("If you like fashion, you will love this
-     little article: #{scrapper.get_text(count_article)}.", 10)
+     little article: #{scrapper.get_text(count_article)}.", 100)
   controller.post("You can check the link here:
     #{scrapper.get_link(count_article)}", 10)
   count_article += 1
   controller.post("Here are some good news on the Covid-19.
-     We have #{covid.recovered} cases that recovered. #stayhome", 10)
-  controller.post('If you like to reflect on life, you will like this: ', 10)
+     We have #{covid.recovered} cases that recovered. #stayhome", 100)
+  controller.post('If you like to reflect on life, you will like this: ', 100)
   controller.post(quotes.quote + ',' + quotes.author, 10)
   controller.post("Please check out this amazing offer:
-     #{store_content.product_title(count_product)}", 10)
+     #{store_content.product_title(count_product)}", 100)
   controller.post(store_content.product_link(count_product), 10)
   count_product += 2
   controller.post("If you like fashion, you will love this
-     little article: #{scrapper.get_text(count_article)}.", 10)
+     little article: #{scrapper.get_text(count_article)}.", 100)
   controller.post("You can check the link here:
     #{scrapper.get_link(count_article)}", 10)
   count_article += 1
-  controller.post(greeter_content.weather_logic, 10)
+  controller.post(greeter_content.weather_logic, 100)
   controller.dm_new_follower
 end
