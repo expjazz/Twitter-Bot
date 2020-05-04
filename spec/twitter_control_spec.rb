@@ -1,11 +1,11 @@
-# frozen_string_literal: true
-
 require_relative '../lib/twitter_control'
 
 describe TwitterControl do
   let(:obj) { TwitterControl.new }
   let(:followers_list) { obj.instance_variable_get(:@followers_list) }
   let(:f_count) { obj.instance_variable_get(:@f_count) }
+  let(:id) { 2_842_991_291 }
+
   describe '#initialize' do
     it 'should initialize a list containg all followers from the users account' do
       expect(obj.followers_list).to be_an(Array)
@@ -40,7 +40,7 @@ describe TwitterControl do
       expect { obj.follow(id) }.to_not raise_error
     end
     it 'should follow a given user and return its user profile' do
-      expect follow(id).to be_an(Twitter::User)
+      expect(follow(id)).to be_an(Twitter::User)
     end
   end
 
@@ -52,7 +52,19 @@ describe TwitterControl do
 
   describe '#tweet_content_to_csv' do
     it 'should call get_tweet_content' do
-      expect(obj.tweet_content_to_csv).to receive(:get_tweet_content)
+      expect(obj.tweet_content_to_csv('#hashtag')).to receive(:get_tweet_content)
+    end
+  end
+
+  describe '#catch_new_followers' do
+    it 'should return a list of profiles to send direct messages' do
+      expect(obj.catch_new_followers).to be_an(Array)
+    end
+  end
+
+  describe '#dm_new_follower' do
+    it 'should return a updated list of the followers' do
+      expect(obj.dm_new_follower).to be_an(Array)
     end
   end
 end

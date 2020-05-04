@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'json'
 require 'uri'
 require 'net/http'
@@ -25,7 +23,3 @@ class Corona
     @recovered = @data['data']['recovered']
   end
 end
-
-test = Corona.new
-p test.confirmed
-p test.recovered

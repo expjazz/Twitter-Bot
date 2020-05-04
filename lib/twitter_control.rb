@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative '../keys.rb'
 require 'twitter'
 require 'pry'
@@ -9,9 +7,9 @@ class TwitterControl
   attr_accessor :client, :f_count, :followers_list
   def initialize
     @client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = CONSUMER_KEY
-      config.consumer_secret     = CONSUMER_SECRET
-      config.access_token        = ACCESS_TOKEN
+      config.consumer_key = CONSUMER_KEY
+      config.consumer_secret = CONSUMER_SECRET
+      config.access_token = ACCESS_TOKEN
       config.access_token_secret = ACCESS_TOKEN_SECRET
     end
     @followers_list = client.follower_ids.attrs[:ids]
@@ -30,7 +28,7 @@ class TwitterControl
   end
 
   def get_tweet_content(hashtag)
-    client.search(hashtag).take(10)
+    client.search(hashtag).take(100)
   end
 
   def tweet_content_to_csv(hashtag)
@@ -56,11 +54,12 @@ class TwitterControl
     list = catch_new_followers
     if list.size.positive?
       list.each do |x|
-        @client.follow(profile)
+        @client.follow(x)
         client.create_direct_message(x, 'Do you want to talk?')
         @followers_list << x
       end
     end
+    @followers_list
   end
 
   def interactor(hashtag, time)

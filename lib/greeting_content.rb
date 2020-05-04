@@ -1,19 +1,22 @@
-# frozen_string_literal: true
-
 class Greetings
   def list
-    morning_list = ['we hope that everything is good. The weather is mainly']
-    morning_list.sample
+    list = ['We hope that everything is good. The weather is mainly',
+            'Life is short, so enjoy! The weather is',
+            'For today, we will have this weather']
+    list.sample
   end
 
   def warm
-    morning_list_hot = ['Embrace yourself for a little heat! The temperature is']
-    morning_list_hot.sample
+    list_hot = ['Embrace yourself for a little heat! The temperature is',
+                'Be ready to sweat a little because we will have a hot day with',
+                'Hope you are ready for a little warm. We have']
+    list_hot.sample
   end
 
   def cold
-    morning_list_cold = ['Embrace yourself for a little breeze!
-      The temperature is']
-    morning_list_cold.sample
+    list_cold = ['Embrace yourself for a little breeze! The temperature is',
+                 "Don't forget your sweeter because today will be a little cold! We have",
+                 'Use this cold weather as an opportunity to wear some jackets. The temperature is']
+    list_cold.sample
   end
 end
