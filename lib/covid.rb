@@ -2,6 +2,7 @@ require 'json'
 require 'uri'
 require 'net/http'
 require 'openssl'
+
 require_relative '../keys'
 
 class Corona

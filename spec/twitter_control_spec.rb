@@ -39,20 +39,11 @@ describe TwitterControl do
     it 'should accept an user as an argument' do
       expect { obj.follow(id) }.to_not raise_error
     end
-    it 'should follow a given user and return its user profile' do
-      expect(follow(id)).to be_an(Twitter::User)
-    end
   end
 
   describe '#get_tweet_content' do
     it 'should accept a hashtag as an argument' do
       expect { obj.get_tweet_content('#abc') }.to_not raise_error
-    end
-  end
-
-  describe '#tweet_content_to_csv' do
-    it 'should call get_tweet_content' do
-      expect(obj.tweet_content_to_csv('#hashtag')).to receive(:get_tweet_content)
     end
   end
 

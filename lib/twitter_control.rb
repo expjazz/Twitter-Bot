@@ -1,3 +1,4 @@
+require_relative 'user_keys'
 require_relative '../keys.rb'
 require 'twitter'
 require 'pry'
