@@ -56,7 +56,7 @@ class TwitterControl
     if list.size.positive?
       list.each do |x|
         @client.follow(x)
-        client.create_direct_message(x, 'Do you want to talk?')
+        client.create_direct_message(x, 'Hey, Thanks for following us. Do you want to know more?')
         @followers_list << x
       end
     end

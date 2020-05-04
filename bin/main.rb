@@ -31,7 +31,7 @@ loop do
   controller.interactor('#lvlvlvch', 10)
   controller.post('A great day to use one of our amazing products!!', 100)
   controller.post("Please check out this amazing offer:
-     #{store_content.product_title(count_product)}", 10)0
+     #{store_content.product_title(count_product)}", 10)
   controller.post(store_content.product_link(count_product), 10)
   count_product += 2
   controller.post("If you like fashion, you will love this
