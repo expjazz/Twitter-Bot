@@ -1,5 +1,5 @@
 require_relative 'user_keys'
-require_relative '../keys.rb'
+require_relative '../keys2.rb'
 require 'twitter'
 require 'pry'
 require 'csv'

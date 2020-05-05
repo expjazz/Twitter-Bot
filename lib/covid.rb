@@ -3,7 +3,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-require_relative '../keys'
+require_relative '../keys2'
 
 class Corona
   attr_reader :data, :confirmed, :recovered
