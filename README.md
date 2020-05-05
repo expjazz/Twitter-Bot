@@ -94,6 +94,14 @@ To test the bot locally, clone the repository, navigate to it's containing direc
 - $  gem install rspec -> run this command to install rspec 
 - $  rspec             ->run this command to test the program with rspec
 
+
+## Install the geckodriver
+
+The app requires the use of the Selenium gem, and for that you need to have a version of Mozilla Firefox working with its respective geckodriver. You can install it with this links:
+[linux](https://askubuntu.com/questions/870530/how-to-install-geckodriver-in-ubuntu)
+[windows and mac](https://github.com/mozilla/geckodriver/releases)
+Don't forget. Without it the application won't work.
+
 ### Details 
 
 First, fork the repo in your local machine and then run the user_keys.rb. Then, paste on the terminal your respective keys. Then, while still on the terminal, type in 'bin/main.rb' and see the magic happens.

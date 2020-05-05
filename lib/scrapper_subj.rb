@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'httparty'
-require 'pry'
 require 'selenium-webdriver'
 class Scrapper
   attr_reader :doc
@@ -20,5 +19,3 @@ class Scrapper
     @doc.css('div.r')[index].children[0].attributes['href'].value
   end
 end
-
-# p test.get_link(5)
